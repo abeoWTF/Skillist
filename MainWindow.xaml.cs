@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using String = System.String;
 
 namespace Skillist
 {
@@ -26,19 +27,7 @@ namespace Skillist
             InitializeComponent();
         }
 
-        //CanSwedishE = canSwedishE;
-        //CanSwedishD = canSwedishD;
-        //CanGermanE = canGermanE;
-        //CanGermanD = canGermanD;
-        //CanNorwegianE = canNorwegianE;
-        //CanNorwegianD = canNorwegianD;
-        //CanReturnPost = canReturnPost;
-        //CanClubApplication = canClubApplication;
-        //CanClubApplication = canClubChangeHere;
-
-        
-
-        private void name_TextBox_GotFocus(object sender, RoutedEventArgs e)
+       private void name_TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             name_TextBox.Clear();
             name_TextBox.Opacity = 100;
@@ -67,9 +56,22 @@ namespace Skillist
             if (ClubChangeHere_Checkbox.IsChecked == true) { clubCH = true; }
             else { clubCH = false; }
 
+            if (name_TextBox.Text != "")
+            {
+                users.Add(new User(name_TextBox.Text, swedishEQ, swedishDQ, germanEQ, germanDQ, norwegianEQ,
+                    norwegianDQ, returnP, clubAP, clubCH));
+                Users_Listbox.Items.Add(users.LastOrDefault());
+
+                name_TextBox.Clear(); 
+                Equeue_Checkbox.IsChecked = false;
 
 
-            //users.Add(new User(name_TextBox.Text, eq));
+
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid name.", "No name entered.");
+            }
         }
     }
 }

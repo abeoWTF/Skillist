@@ -21,12 +21,17 @@
         <Button Content="Create user" HorizontalAlignment="Left" Margin="927,296,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <CheckBox x:Name="Equeue_Checkbox" Content="E-queue" HorizontalAlignment="Left" Margin="853,114,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Country_No_lbl" Content="Norway:" HorizontalAlignment="Left" Margin="791,185,0,0" VerticalAlignment="Top" Width="64"/>
-        <CheckBox x:Name="Equeue_No_lbl" Content="E-queue" HorizontalAlignment="Left" Margin="853,191,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="Dqueue_No_lbl" Content="D-queue" HorizontalAlignment="Left" Margin="936,191,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Equeue_No_Checkbox" Content="E-queue" HorizontalAlignment="Left" Margin="853,191,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Dqueue_No_Checkbox" Content="D-queue" HorizontalAlignment="Left" Margin="936,191,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Country_De_lbl" Content="Germany:" HorizontalAlignment="Left" Margin="791,224,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="Equeue_No_lbl_Copy" Content="E-queue" HorizontalAlignment="Left" Margin="853,230,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="Dqueue_No_lbl_Copy" Content="D-queue" HorizontalAlignment="Left" Margin="936,230,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Equeue_De_Checkbox" Content="E-queue" HorizontalAlignment="Left" Margin="853,230,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Dqueue_De_Checkbox" Content="D-queue" HorizontalAlignment="Left" Margin="936,230,0,0" VerticalAlignment="Top"/>
         <Label x:Name="General_lbl" Content="General:" HorizontalAlignment="Left" Height="28" Margin="791,257,0,0" VerticalAlignment="Top" Width="64"/>
+        <ListBox x:Name="Users_Listbox" HorizontalAlignment="Left" Height="499" Margin="576,28,0,0" VerticalAlignment="Top" Width="204" DisplayMemberPath="UserName"/>
+        <Rectangle HorizontalAlignment="Left" Height="28" Margin="576,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="204" StrokeThickness="0" Fill="#FFF4F4F5"/>
+        <Label x:Name="Users_lbl" Content="Users:" HorizontalAlignment="Left" Height="33" Margin="656,0,0,0" VerticalAlignment="Top" Width="94"/>
+        <Rectangle x:Name="Divider" Fill="#FFC6C6C7" HorizontalAlignment="Left" Height="529" Margin="779,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="7"/>
+        <Rectangle x:Name="Divider_Copy" Fill="#FFC6C6C7" HorizontalAlignment="Left" Height="529" Margin="576,-2,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="7"/>
 
     </Grid>
 </Window>
