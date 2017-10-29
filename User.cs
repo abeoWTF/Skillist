@@ -9,17 +9,17 @@ namespace Skillist
     public class User
     {
         public string UserName { get; set; }
-        public bool CanSwedishE { get; set; }
-        public bool CanSwedishD { get; set; }
-        public bool CanGermanE { get; set; }
-        public bool CanGermanD { get; set; }
-        public bool CanNorwegianE { get; set; }
-        public bool CanNorwegianD { get; set; }
-        public bool CanReturnPost { get; set; }
-        public bool CanClubApplication { get; set; }
-        public bool CanClubChangeHere { get; set; }
+        public string CanSwedishE { get; set; }
+        public string CanSwedishD { get; set; }
+        public string CanGermanE { get; set; }
+        public string CanGermanD { get; set; }
+        public string CanNorwegianE { get; set; }
+        public string CanNorwegianD { get; set; }
+        public string CanReturnPost { get; set; }
+        public string CanClubApplication { get; set; }
+        public string CanClubChangeHere { get; set; }
 
-        public User(string name, bool canSwedishE, bool canSwedishD, bool canGermanE, bool canGermanD, bool canNorwegianE, bool canNorwegianD, bool canReturnPost, bool canClubApplication, bool canClubChangeHere)
+        public User(string name, string canSwedishE, string canSwedishD, string canGermanE, string canGermanD, string canNorwegianE, string canNorwegianD, string canReturnPost, string canClubApplication, string canClubChangeHere)
         {
             UserName = name;
             CanSwedishE = canSwedishE;
@@ -32,13 +32,10 @@ namespace Skillist
             CanClubApplication = canClubApplication;
             CanClubChangeHere = canClubChangeHere;
         }
-
-        public User(string name, bool canSwedishE)
+        public override string ToString()
         {
-            UserName = name;
-            CanSwedishE = canSwedishE;
+            return string.Format("{0} {1} ({2}), {3} , {4}, {5}, {6}, {7}, {8}, {9})",
+                "Skills", CanSwedishE, CanSwedishD, CanGermanE, CanGermanD, CanNorwegianE, CanNorwegianD, CanReturnPost, CanClubApplication, CanClubChangeHere);
         }
-
-
     }
 }

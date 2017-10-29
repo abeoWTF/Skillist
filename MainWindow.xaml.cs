@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,40 +28,42 @@ namespace Skillist
         {
             InitializeComponent();
             DisableCheckBox();
+           
         }
         
        private void name_TextBox_GotFocus(object sender, RoutedEventArgs e)
        {
             name_TextBox.Clear();
             name_TextBox.Opacity = 100;
-            EnableCheckBox();
+          
+                               EnableCheckBox();
             
        }
         //Create user.
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            bool swedishEQ, swedishDQ, germanEQ, germanDQ, norwegianEQ, norwegianDQ, returnP, clubAP, clubCH;
+            string swedishEQ, swedishDQ, germanEQ, germanDQ, norwegianEQ, norwegianDQ, returnP, clubAP, clubCH;
 
-            if (Equeue_Checkbox.IsChecked == true) { swedishEQ = true; }
-            else { swedishEQ = false;}
-            if (Dqueue_Checkbox.IsChecked == true) { swedishDQ = true; }
-            else { swedishDQ = false; }
-            if (Equeue_De_Checkbox.IsChecked == true) { germanEQ = true; }
-            else { germanEQ = false; }
-            if (Dqueue_De_Checkbox.IsChecked == true) { germanDQ = true; }
-            else { germanDQ = false; }
-            if (Equeue_No_Checkbox.IsChecked == true) { norwegianEQ = true; }
-            else { norwegianEQ = false; }
-            if (Dqueue_No_Checkbox.IsChecked == true) { norwegianDQ = true; }
-            else { norwegianDQ = false; }
-            if (Returpost_checkbox.IsChecked == true) { returnP = true; }
-            else { returnP = false; }
-            if (Club_Checkbox.IsChecked == true) { clubAP = true; }
-            else { clubAP = false; }
-            if (ClubChangeHere_Checkbox.IsChecked == true) { clubCH = true; }
-            else { clubCH = false; }
+            if (Equeue_Checkbox.IsChecked == true) { swedishEQ = "Swedish E-Queue"; }
+            else { swedishEQ = string.Empty;}
+            if (Dqueue_Checkbox.IsChecked == true) { swedishDQ = "Swedish D-Queue"; }
+            else { swedishDQ = string.Empty; }
+            if (Equeue_De_Checkbox.IsChecked == true) { germanEQ = "German E-Queue"; }
+            else { germanEQ = string.Empty; }
+            if (Dqueue_De_Checkbox.IsChecked == true) { germanDQ = "German D-Queue"; ; }
+            else { germanDQ = string.Empty; }
+            if (Equeue_No_Checkbox.IsChecked == true) { norwegianEQ = "Norwgian E-Queue"; }
+            else { norwegianEQ = string.Empty; }
+            if (Dqueue_No_Checkbox.IsChecked == true) { norwegianDQ = "Norwegian D-Queue"; }
+            else { norwegianDQ = string.Empty; }
+            if (Returpost_checkbox.IsChecked == true) { returnP = "Returned post"; }
+            else { returnP = string.Empty; }
+            if (Club_Checkbox.IsChecked == true) { clubAP = "Club applications"; }
+            else { clubAP = string.Empty; }
+            if (ClubChangeHere_Checkbox.IsChecked == true) { clubCH = "Club change here"; }
+            else { clubCH = string.Empty; }
 
-            if (name_TextBox.Text != "")
+            if (!(string.IsNullOrWhiteSpace(name_TextBox.Text)))
             {
                 
                 users.Add(new User(name_TextBox.Text, swedishEQ, swedishDQ, germanEQ, germanDQ, norwegianEQ,
@@ -130,7 +133,34 @@ namespace Skillist
 
         }
 
+        private void Users_Listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Resultlist_ListBox.Items.Clear();
+            DisableCheckBox();
+            if (Users_Listbox.SelectedItem != null)
+            {
+                object selectedAgent = Users_Listbox.SelectedItem;
 
-        
+                PropertyInfo[] properties = selectedAgent.GetType().GetProperties();
+                foreach (var p in properties)
+                {
+                    var myVal = p.GetValue(selectedAgent);
+                    Resultlist_ListBox.Items.Add(myVal.ToString());
+                    int count = Resultlist_ListBox.Items.Count;
+                    for (int i = count - 1; i >= 0; i--)
+                    {
+                        if (Resultlist_ListBox.Items[i].ToString() == string.Empty)
+                        {
+                            Resultlist_ListBox.Items.RemoveAt(i);
+                        }
+                    }
+
+                }
+
+            }
+
+            
+
+        }
     }
 }
