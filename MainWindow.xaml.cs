@@ -58,9 +58,9 @@ namespace Skillist
             else { norwegianDQ = string.Empty; }
             if (Returpost_checkbox.IsChecked == true) { returnP = "Returned post"; }
             else { returnP = string.Empty; }
-            if (Club_Checkbox.IsChecked == true) { clubAP = "Club applications"; }
+            if (Club_Checkbox.IsChecked == true) { clubAP = "H&M Club - applications"; }
             else { clubAP = string.Empty; }
-            if (ClubChangeHere_Checkbox.IsChecked == true) { clubCH = "Club change here"; }
+            if (ClubChangeHere_Checkbox.IsChecked == true) { clubCH = "H&M Club - change here"; }
             else { clubCH = string.Empty; }
 
             if (!(string.IsNullOrWhiteSpace(name_TextBox.Text)))
@@ -90,6 +90,34 @@ namespace Skillist
             }
         }
 
+        //Add result.
+        private void Users_Listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Resultlist_ListBox.Items.Clear();
+            DisableCheckBox();
+            if (Users_Listbox.SelectedItem != null)
+            {
+                DeleteUser_Button.IsEnabled = true;
+                object selectedAgent = Users_Listbox.SelectedItem;
+                PropertyInfo[] properties = selectedAgent.GetType().GetProperties();
+
+                foreach (var p in properties)
+                {
+                    var myVal = p.GetValue(selectedAgent);
+                    Resultlist_ListBox.Items.Add(myVal.ToString());
+                    int count = Resultlist_ListBox.Items.Count;
+                    for (int i = count - 1; i >= 0; i--)
+                    {
+                        //Remove empty items.
+                        if (Resultlist_ListBox.Items[i].ToString() == string.Empty)
+                        {
+                            Resultlist_ListBox.Items.RemoveAt(i);
+                        }
+                    }
+                }
+            }
+            
+        }
         //Disables the checkboxes.
         public void DisableCheckBox()
         {
@@ -132,35 +160,35 @@ namespace Skillist
             ClubChangeHere_Checkbox.IsChecked = false;
 
         }
-
-        private void Users_Listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //Delete User
+        private void DeleteUser_Button_Click(object sender, RoutedEventArgs e)
         {
-            Resultlist_ListBox.Items.Clear();
-            DisableCheckBox();
-            if (Users_Listbox.SelectedItem != null)
+            try
             {
-                object selectedAgent = Users_Listbox.SelectedItem;
-
-                PropertyInfo[] properties = selectedAgent.GetType().GetProperties();
-                foreach (var p in properties)
+                if (Users_Listbox.SelectedItem != null)
                 {
-                    var myVal = p.GetValue(selectedAgent);
-                    Resultlist_ListBox.Items.Add(myVal.ToString());
-                    int count = Resultlist_ListBox.Items.Count;
-                    for (int i = count - 1; i >= 0; i--)
+                    var item = users.LastOrDefault(x => name_TextBox.Text == Name);
                     {
-                        if (Resultlist_ListBox.Items[i].ToString() == string.Empty)
-                        {
-                            Resultlist_ListBox.Items.RemoveAt(i);
-                        }
+                        users.Remove(item);
                     }
-
                 }
-
+                Users_Listbox.Items.Remove(Users_Listbox.SelectedItem);
             }
+            catch { }
 
-            
+        }
 
+        private void skill_finder_Click(object sender, RoutedEventArgs e)
+        {
+            Users_Listbox.Items.Clear();
+            var query = from user in users
+                where user.CanClubApplication.Contains("H&M Club - applications")
+                select user;
+
+            foreach (var usr in query)
+            {
+                Users_Listbox.Items.Add(usr);
+            }
         }
     }
 }

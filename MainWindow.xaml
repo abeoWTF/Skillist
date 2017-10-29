@@ -10,7 +10,7 @@
 
         <ListBox x:Name="Resultlist_ListBox" HorizontalAlignment="Left" Height="529" Margin="399,0,0,0" VerticalAlignment="Top" Width="177"/>
 
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="529" Stroke="Black" VerticalAlignment="Top" Width="243" Margin="779,0,0,0" StrokeThickness="0"/>
+        <Rectangle Fill="#FFD4EEEC" HorizontalAlignment="Left" Height="529" Stroke="Black" VerticalAlignment="Top" Width="243" Margin="779,0,0,0" StrokeThickness="0"/>
 
         <TextBox x:Name="name_TextBox" HorizontalAlignment="Left" Height="23" Margin="816,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Text="Surname, Name" Opacity="0.4" GotFocus="name_TextBox_GotFocus"/>
         <Label x:Name="CreateUser_lbl" Content="Create user:" HorizontalAlignment="Left" Height="33" Margin="801,15,0,0" VerticalAlignment="Top" Width="94"/>
@@ -34,6 +34,10 @@
         <Label x:Name="Users_lbl" Content="Users:" HorizontalAlignment="Left" Height="33" Margin="656,0,0,0" VerticalAlignment="Top" Width="94"/>
         <Rectangle x:Name="Divider" Fill="#FFC6C6C7" HorizontalAlignment="Left" Height="529" Margin="779,0,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="7"/>
         <Rectangle x:Name="Divider_Copy" Fill="#FFC6C6C7" HorizontalAlignment="Left" Height="529" Margin="576,-2,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="7"/>
+        <Button x:Name="UpdateUser_Button" Content="Update User" HorizontalAlignment="Left" Margin="913,452,0,0" VerticalAlignment="Top" Width="99"/>
+        <Label x:Name="UserControl_Button" Content="User control:" HorizontalAlignment="Left" Margin="808,406,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="DeleteUser_Button" Content="Delete User" HorizontalAlignment="Left" Margin="804,452,0,0" VerticalAlignment="Top" Width="91" Click="DeleteUser_Button_Click" IsEnabled="False"/>
+        <Button x:Name="skill_finder" Content="Find" HorizontalAlignment="Left" Margin="147,296,0,0" VerticalAlignment="Top" Width="75" Click="skill_finder_Click"/>
 
     </Grid>
 </Window>
