@@ -297,7 +297,7 @@ namespace Skillist
 
         private void ShowAll_users_Click(object sender, RoutedEventArgs e)
         {
-           
+           Users_Listbox.Items.Clear();
 
             foreach (User listItem in users)
             {
