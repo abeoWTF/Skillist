@@ -52,7 +52,7 @@ namespace Skillist
             else { germanEQ = string.Empty; }
             if (Dqueue_De_Checkbox.IsChecked == true) { germanDQ = "German D-Queue"; ; }
             else { germanDQ = string.Empty; }
-            if (Equeue_No_Checkbox.IsChecked == true) { norwegianEQ = "Norwgian E-Queue"; }
+            if (Equeue_No_Checkbox.IsChecked == true) { norwegianEQ = "Norwegian E-Queue"; }
             else { norwegianEQ = string.Empty; }
             if (Dqueue_No_Checkbox.IsChecked == true) { norwegianDQ = "Norwegian D-Queue"; }
             else { norwegianDQ = string.Empty; }
@@ -188,6 +188,120 @@ namespace Skillist
             foreach (var usr in query)
             {
                 Users_Listbox.Items.Add(usr);
+            }
+        }
+
+        private void SkillFind_SEEQ_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Users_Listbox.Items.Clear();
+            var query = from user in users
+                where user.CanSwedishE.Contains("Swedish E-Queue")
+                select user;
+
+            foreach (var usr in query)
+            {
+                Users_Listbox.Items.Add(usr);
+            }
+        }
+
+        private void SkillFind_SWDQ_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Users_Listbox.Items.Clear();
+            var query = from user in users
+                where user.CanSwedishD.Contains("Swedish D-Queue")
+                select user;
+
+            foreach (var usr in query)
+            {
+                Users_Listbox.Items.Add(usr);
+            }
+        }
+
+        private void HM_ClubChange_lbl_Click(object sender, RoutedEventArgs e)
+        {
+            Users_Listbox.Items.Clear();
+            var query = from user in users
+                where user.CanClubChangeHere.Contains("H&M Club - change here")
+                select user;
+
+            foreach (var usr in query)
+            {
+                Users_Listbox.Items.Add(usr);
+            }
+        }
+
+        private void SkillFind_NOEQ_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Users_Listbox.Items.Clear();
+            var query = from user in users
+                where user.CanNorwegianE.Contains("Norwegian E-Queue")
+                select user;
+
+            foreach (var usr in query)
+            {
+                Users_Listbox.Items.Add(usr);
+            }
+        }
+
+        private void SkillFind_NODQ_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Users_Listbox.Items.Clear();
+            var query = from user in users
+                where user.CanNorwegianD.Contains("Norwegian D-Queue")
+                select user;
+
+            foreach (var usr in query)
+            {
+                Users_Listbox.Items.Add(usr);
+            }
+        }
+
+        private void SkillFind_DEEQ_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Users_Listbox.Items.Clear();
+            var query = from user in users
+                where user.CanGermanE.Contains("German E-Queue")
+                select user;
+
+            foreach (var usr in query)
+            {
+                Users_Listbox.Items.Add(usr);
+            }
+        }
+
+        private void SkillFind_DEDQ_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Users_Listbox.Items.Clear();
+            var query = from user in users
+                where user.CanGermanD.Contains("German D-Queue")
+                select user;
+
+            foreach (var usr in query)
+            {
+                Users_Listbox.Items.Add(usr);
+            }
+        }
+
+        private void SkillFind_RP_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Users_Listbox.Items.Clear();
+            var query = from user in users
+                where user.CanReturnPost.Contains("Returned post")
+                select user;
+
+            foreach (var usr in query)
+            {
+                Users_Listbox.Items.Add(usr);
+            }
+        }
+
+        private void ShowAll_users_Click(object sender, RoutedEventArgs e)
+        {
+           
+
+            foreach (User listItem in users)
+            {
+                Users_Listbox.Items.Add(listItem);
             }
         }
     }
