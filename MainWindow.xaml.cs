@@ -65,12 +65,9 @@ namespace Skillist
 
             if (!(string.IsNullOrWhiteSpace(name_TextBox.Text)))
             {
-                
                 users.Add(new User(name_TextBox.Text, swedishEQ, swedishDQ, germanEQ, germanDQ, norwegianEQ,
                     norwegianDQ, returnP, clubAP, clubCH));
                 Users_Listbox.Items.Add(users.LastOrDefault());
-
-                
 
                 var list = Users_Listbox.Items.Cast<User>().OrderBy(item => item.UserName).ToList();
                 Users_Listbox.Items.Clear();
@@ -79,9 +76,9 @@ namespace Skillist
                 {
                     Users_Listbox.Items.Add(listItem);
                 }
+
                 UncheckClearAll();
                 DisableCheckBox();
-                
             }
 
             else
@@ -118,48 +115,7 @@ namespace Skillist
             }
             
         }
-        //Disables the checkboxes.
-        public void DisableCheckBox()
-        {
-            Equeue_Checkbox.IsEnabled = false;
-            Dqueue_Checkbox.IsEnabled = false;
-            Dqueue_De_Checkbox.IsEnabled = false;
-            Equeue_De_Checkbox.IsEnabled = false;
-            Equeue_No_Checkbox.IsEnabled = false;
-            Dqueue_No_Checkbox.IsEnabled = false;
-            Returpost_checkbox.IsEnabled = false;
-            Club_Checkbox.IsEnabled = false;
-            ClubChangeHere_Checkbox.IsEnabled = false;
-            
-        }
-        //Enables the checkboxes.
-        public void EnableCheckBox()
-        {
-            Equeue_Checkbox.IsEnabled = true;
-            Dqueue_Checkbox.IsEnabled = true;
-            Dqueue_De_Checkbox.IsEnabled = true;
-            Equeue_De_Checkbox.IsEnabled = true;
-            Equeue_No_Checkbox.IsEnabled = true;
-            Dqueue_No_Checkbox.IsEnabled = true;
-            Returpost_checkbox.IsEnabled = true;
-            Club_Checkbox.IsEnabled = true;
-            ClubChangeHere_Checkbox.IsEnabled = true;
-        }
-        //Unchecks the checkboxes.
-        public void UncheckClearAll()
-        {
-            name_TextBox.Clear();
-            Equeue_Checkbox.IsChecked = false;
-            Dqueue_Checkbox.IsChecked = false;
-            Equeue_De_Checkbox.IsChecked = false;
-            Dqueue_De_Checkbox.IsChecked = false;
-            Equeue_No_Checkbox.IsChecked = false;
-            Dqueue_No_Checkbox.IsChecked = false;
-            Returpost_checkbox.IsChecked = false;
-            Club_Checkbox.IsChecked = false;
-            ClubChangeHere_Checkbox.IsChecked = false;
-
-        }
+      
         //Delete User
         private void DeleteUser_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -178,6 +134,7 @@ namespace Skillist
 
         }
 
+        //Find skills
         private void skill_finder_Click(object sender, RoutedEventArgs e)
         {
             Users_Listbox.Items.Clear();
@@ -304,5 +261,56 @@ namespace Skillist
                 Users_Listbox.Items.Add(listItem);
             }
         }
+        private void UpdateUser_Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            //not implented yet.
+
+        }
+
+        //Disables the checkboxes.
+        public void DisableCheckBox()
+        {
+            Equeue_Checkbox.IsEnabled = false;
+            Dqueue_Checkbox.IsEnabled = false;
+            Dqueue_De_Checkbox.IsEnabled = false;
+            Equeue_De_Checkbox.IsEnabled = false;
+            Equeue_No_Checkbox.IsEnabled = false;
+            Dqueue_No_Checkbox.IsEnabled = false;
+            Returpost_checkbox.IsEnabled = false;
+            Club_Checkbox.IsEnabled = false;
+            ClubChangeHere_Checkbox.IsEnabled = false;
+
+        }
+        //Enables the checkboxes.
+        public void EnableCheckBox()
+        {
+            Equeue_Checkbox.IsEnabled = true;
+            Dqueue_Checkbox.IsEnabled = true;
+            Dqueue_De_Checkbox.IsEnabled = true;
+            Equeue_De_Checkbox.IsEnabled = true;
+            Equeue_No_Checkbox.IsEnabled = true;
+            Dqueue_No_Checkbox.IsEnabled = true;
+            Returpost_checkbox.IsEnabled = true;
+            Club_Checkbox.IsEnabled = true;
+            ClubChangeHere_Checkbox.IsEnabled = true;
+        }
+        //Unchecks the checkboxes.
+        public void UncheckClearAll()
+        {
+            name_TextBox.Clear();
+            Equeue_Checkbox.IsChecked = false;
+            Dqueue_Checkbox.IsChecked = false;
+            Equeue_De_Checkbox.IsChecked = false;
+            Dqueue_De_Checkbox.IsChecked = false;
+            Equeue_No_Checkbox.IsChecked = false;
+            Dqueue_No_Checkbox.IsChecked = false;
+            Returpost_checkbox.IsChecked = false;
+            Club_Checkbox.IsChecked = false;
+            ClubChangeHere_Checkbox.IsChecked = false;
+
+        }
+
+       
     }
 }
